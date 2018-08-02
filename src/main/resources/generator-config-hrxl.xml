@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <!--   此处为运行Myruner程序提供的生成部分中文注释的配置，如果使用此配置，注释掉另外一个commentGenerator-->
+        <commentGenerator type="org.zyp.mybatis.generator.ZHCommentGenerator">
+            <property name="suppressDate" value="true"/>
+            <!--       是否去除自动生成的注释 true：是 ： false:否  -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://175.6.7.104:3306/hrxldb?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull"
+                        userId="hrxldbadmin" password="hrxlqwer"/>
+
+        <javaModelGenerator targetPackage="com.zm.domain" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.zm.dao.mapper" targetProject="src/main/java"/>
+        <javaClientGenerator targetPackage="com.zm.dao" targetProject="src/main/java" type="XMLMAPPER"/>
+
+
+        <table tableName="hrxl_bg_user" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+        <table tableName="hrxl_front_user" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+        <table tableName="hrxl_front_user_exchange" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+        <table tableName="hrxl_front_user_integral" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+        <table tableName="hrxl_goods" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" type="post"/>
+        </table>
+
+
+
+
+    </context>
+</generatorConfiguration>

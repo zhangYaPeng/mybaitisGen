@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eakay.web.repository.db.mybatis.PushMsgRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.eakay.web.client.dataobject.PushMsgRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="customerId" property="customerid" jdbcType="INTEGER" />
+    <result column="appClient" property="appclient" jdbcType="VARCHAR" />
+    <result column="deviceToken" property="devicetoken" jdbcType="VARCHAR" />
+    <result column="pushId" property="pushid" jdbcType="INTEGER" />
+    <result column="msgType" property="msgtype" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="pushTime" property="pushtime" jdbcType="TIMESTAMP" />
+    <result column="pushStatus" property="pushstatus" jdbcType="INTEGER" />
+    <result column="isRead" property="isread" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customerId, appClient, deviceToken, pushId, msgType, title, message, pushTime, 
+    pushStatus, isRead, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from push_msg_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from push_msg_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.eakay.web.client.dataobject.PushMsgRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into push_msg_record (customerId, appClient, deviceToken, 
+      pushId, msgType, title, 
+      message, pushTime, pushStatus, 
+      isRead, status)
+    values (#{customerid,jdbcType=INTEGER}, #{appclient,jdbcType=VARCHAR}, #{devicetoken,jdbcType=VARCHAR}, 
+      #{pushid,jdbcType=INTEGER}, #{msgtype,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{pushtime,jdbcType=TIMESTAMP}, #{pushstatus,jdbcType=INTEGER}, 
+      #{isread,jdbcType=BIT}, #{status,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.eakay.web.client.dataobject.PushMsgRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into push_msg_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerid != null" >
+        customerId,
+      </if>
+      <if test="appclient != null" >
+        appClient,
+      </if>
+      <if test="devicetoken != null" >
+        deviceToken,
+      </if>
+      <if test="pushid != null" >
+        pushId,
+      </if>
+      <if test="msgtype != null" >
+        msgType,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="pushtime != null" >
+        pushTime,
+      </if>
+      <if test="pushstatus != null" >
+        pushStatus,
+      </if>
+      <if test="isread != null" >
+        isRead,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerid != null" >
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="appclient != null" >
+        #{appclient,jdbcType=VARCHAR},
+      </if>
+      <if test="devicetoken != null" >
+        #{devicetoken,jdbcType=VARCHAR},
+      </if>
+      <if test="pushid != null" >
+        #{pushid,jdbcType=INTEGER},
+      </if>
+      <if test="msgtype != null" >
+        #{msgtype,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="pushtime != null" >
+        #{pushtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushstatus != null" >
+        #{pushstatus,jdbcType=INTEGER},
+      </if>
+      <if test="isread != null" >
+        #{isread,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.eakay.web.client.dataobject.PushMsgRecord" >
+    update push_msg_record
+    <set >
+      <if test="customerid != null" >
+        customerId = #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="appclient != null" >
+        appClient = #{appclient,jdbcType=VARCHAR},
+      </if>
+      <if test="devicetoken != null" >
+        deviceToken = #{devicetoken,jdbcType=VARCHAR},
+      </if>
+      <if test="pushid != null" >
+        pushId = #{pushid,jdbcType=INTEGER},
+      </if>
+      <if test="msgtype != null" >
+        msgType = #{msgtype,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="pushtime != null" >
+        pushTime = #{pushtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushstatus != null" >
+        pushStatus = #{pushstatus,jdbcType=INTEGER},
+      </if>
+      <if test="isread != null" >
+        isRead = #{isread,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.eakay.web.client.dataobject.PushMsgRecord" >
+    update push_msg_record
+    set customerId = #{customerid,jdbcType=INTEGER},
+      appClient = #{appclient,jdbcType=VARCHAR},
+      deviceToken = #{devicetoken,jdbcType=VARCHAR},
+      pushId = #{pushid,jdbcType=INTEGER},
+      msgType = #{msgtype,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      pushTime = #{pushtime,jdbcType=TIMESTAMP},
+      pushStatus = #{pushstatus,jdbcType=INTEGER},
+      isRead = #{isread,jdbcType=BIT},
+      status = #{status,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

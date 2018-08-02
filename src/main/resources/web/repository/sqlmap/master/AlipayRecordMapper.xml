@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.eakay.web.repository.db.mybatis.AlipayRecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.eakay.web.client.dataobject.AlipayRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="customerId" property="customerid" jdbcType="INTEGER" />
+    <result column="payFee" property="payfee" jdbcType="DECIMAL" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="appClient" property="appclient" jdbcType="VARCHAR" />
+    <result column="appVersion" property="appversion" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="codeDesc" property="codedesc" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="merchantId" property="merchantid" jdbcType="INTEGER" />
+    <result column="orderId" property="orderid" jdbcType="BIGINT" />
+    <result column="tradeNo" property="tradeno" jdbcType="VARCHAR" />
+    <result column="sellerEmail" property="selleremail" jdbcType="VARCHAR" />
+    <result column="buyerEmail" property="buyeremail" jdbcType="VARCHAR" />
+    <result column="payment" property="payment" jdbcType="VARCHAR" />
+    <result column="subCode" property="subcode" jdbcType="VARCHAR" />
+    <result column="idSuffix" property="idsuffix" jdbcType="VARCHAR" />
+    <result column="storageId" property="storageid" jdbcType="INTEGER" />
+    <result column="payTime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="origQryId" property="origqryid" jdbcType="VARCHAR" />
+    <result column="paymentType" property="paymenttype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, customerId, payFee, createTime, appClient, appVersion, subject, code, codeDesc, 
+    number, merchantId, orderId, tradeNo, sellerEmail, buyerEmail, payment, subCode, 
+    idSuffix, storageId, payTime, updateTime, origQryId, paymentType
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from alipay_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from alipay_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.eakay.web.client.dataobject.AlipayRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into alipay_record (customerId, payFee, createTime, 
+      appClient, appVersion, subject, 
+      code, codeDesc, number, 
+      merchantId, orderId, tradeNo, 
+      sellerEmail, buyerEmail, payment, 
+      subCode, idSuffix, storageId, 
+      payTime, updateTime, origQryId, 
+      paymentType)
+    values (#{customerid,jdbcType=INTEGER}, #{payfee,jdbcType=DECIMAL}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{appclient,jdbcType=VARCHAR}, #{appversion,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{codedesc,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{merchantid,jdbcType=INTEGER}, #{orderid,jdbcType=BIGINT}, #{tradeno,jdbcType=VARCHAR}, 
+      #{selleremail,jdbcType=VARCHAR}, #{buyeremail,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, 
+      #{subcode,jdbcType=VARCHAR}, #{idsuffix,jdbcType=VARCHAR}, #{storageid,jdbcType=INTEGER}, 
+      #{paytime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{origqryid,jdbcType=VARCHAR}, 
+      #{paymenttype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.eakay.web.client.dataobject.AlipayRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into alipay_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerid != null" >
+        customerId,
+      </if>
+      <if test="payfee != null" >
+        payFee,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="appclient != null" >
+        appClient,
+      </if>
+      <if test="appversion != null" >
+        appVersion,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="codedesc != null" >
+        codeDesc,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="merchantid != null" >
+        merchantId,
+      </if>
+      <if test="orderid != null" >
+        orderId,
+      </if>
+      <if test="tradeno != null" >
+        tradeNo,
+      </if>
+      <if test="selleremail != null" >
+        sellerEmail,
+      </if>
+      <if test="buyeremail != null" >
+        buyerEmail,
+      </if>
+      <if test="payment != null" >
+        payment,
+      </if>
+      <if test="subcode != null" >
+        subCode,
+      </if>
+      <if test="idsuffix != null" >
+        idSuffix,
+      </if>
+      <if test="storageid != null" >
+        storageId,
+      </if>
+      <if test="paytime != null" >
+        payTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="origqryid != null" >
+        origQryId,
+      </if>
+      <if test="paymenttype != null" >
+        paymentType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerid != null" >
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="payfee != null" >
+        #{payfee,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appclient != null" >
+        #{appclient,jdbcType=VARCHAR},
+      </if>
+      <if test="appversion != null" >
+        #{appversion,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="codedesc != null" >
+        #{codedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="merchantid != null" >
+        #{merchantid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="tradeno != null" >
+        #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="selleremail != null" >
+        #{selleremail,jdbcType=VARCHAR},
+      </if>
+      <if test="buyeremail != null" >
+        #{buyeremail,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="subcode != null" >
+        #{subcode,jdbcType=VARCHAR},
+      </if>
+      <if test="idsuffix != null" >
+        #{idsuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="storageid != null" >
+        #{storageid,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origqryid != null" >
+        #{origqryid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymenttype != null" >
+        #{paymenttype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.eakay.web.client.dataobject.AlipayRecord" >
+    update alipay_record
+    <set >
+      <if test="customerid != null" >
+        customerId = #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="payfee != null" >
+        payFee = #{payfee,jdbcType=DECIMAL},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="appclient != null" >
+        appClient = #{appclient,jdbcType=VARCHAR},
+      </if>
+      <if test="appversion != null" >
+        appVersion = #{appversion,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="codedesc != null" >
+        codeDesc = #{codedesc,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="merchantid != null" >
+        merchantId = #{merchantid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        orderId = #{orderid,jdbcType=BIGINT},
+      </if>
+      <if test="tradeno != null" >
+        tradeNo = #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="selleremail != null" >
+        sellerEmail = #{selleremail,jdbcType=VARCHAR},
+      </if>
+      <if test="buyeremail != null" >
+        buyerEmail = #{buyeremail,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="subcode != null" >
+        subCode = #{subcode,jdbcType=VARCHAR},
+      </if>
+      <if test="idsuffix != null" >
+        idSuffix = #{idsuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="storageid != null" >
+        storageId = #{storageid,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        payTime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="origqryid != null" >
+        origQryId = #{origqryid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymenttype != null" >
+        paymentType = #{paymenttype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.eakay.web.client.dataobject.AlipayRecord" >
+    update alipay_record
+    set customerId = #{customerid,jdbcType=INTEGER},
+      payFee = #{payfee,jdbcType=DECIMAL},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      appClient = #{appclient,jdbcType=VARCHAR},
+      appVersion = #{appversion,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      codeDesc = #{codedesc,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      merchantId = #{merchantid,jdbcType=INTEGER},
+      orderId = #{orderid,jdbcType=BIGINT},
+      tradeNo = #{tradeno,jdbcType=VARCHAR},
+      sellerEmail = #{selleremail,jdbcType=VARCHAR},
+      buyerEmail = #{buyeremail,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=VARCHAR},
+      subCode = #{subcode,jdbcType=VARCHAR},
+      idSuffix = #{idsuffix,jdbcType=VARCHAR},
+      storageId = #{storageid,jdbcType=INTEGER},
+      payTime = #{paytime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      origQryId = #{origqryid,jdbcType=VARCHAR},
+      paymentType = #{paymenttype,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
